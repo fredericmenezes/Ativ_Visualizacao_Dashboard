@@ -38,12 +38,12 @@ st.pyplot(fig)
 # Gráfico 2: Relação entre área do imóvel e valor do aluguel
 st.subheader(f'Relação entre Área e Valor do Aluguel em {cidade}')
 # Mapeamento dos valores da coluna 'furniture' para português no dataframe filtrado
-df_filtered.loc[:, 'Mobilia'] = df_filtered['furniture'].map(furniture_map)
+df_filtered.loc[:, 'Mobilia:'] = df_filtered['furniture'].map(furniture_map)
 # Mapeamento dos valores da coluna 'accept' para português no dataframe filtrado
-df_filtered.loc[:, 'Animais'] = df_filtered['animal'].map(accept_map)
+df_filtered.loc[:, 'Animais:'] = df_filtered['animal'].map(accept_map)
 fig, ax = plt.subplots()
 # sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture', style='animal', ax=ax)
-sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='Mobilia', style='Animais', ax=ax)
+sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='Mobilia:', style='Animais:', ax=ax)
 ax.set_xlabel('Área (m²)')
 ax.set_ylabel('Valor do Aluguel (R$)')
 st.pyplot(fig)
