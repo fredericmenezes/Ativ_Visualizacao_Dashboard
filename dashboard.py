@@ -4,11 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Carregar o dataset
-dados = pd.read_csv('house02.csv')
+df = pd.read_csv('house02.csv')
 
-# remover os outliers
-q = dados["area"].quantile(0.99)
-df = dados[(dados["area"] < q)]
+
 
 # Mapeamento das opções de 'furnished' para português
 furniture_map = {
@@ -29,7 +27,11 @@ st.title('Dashboard de Aluguel de Casas no Brasil')
 cidade = st.selectbox('Selecione a cidade', df['city'].unique())
 
 # Filtrar os dados pela cidade selecionada
-df_filtered = df[df['city'] == cidade]
+dados = df[df['city'] == cidade]
+
+# remover os outliers
+q = dados["area"].quantile(0.99)
+df_filtered = dados[(dados["area"] < q)]
 
 # Gráfico 1: Distribuição dos valores de aluguel na cidade selecionada
 st.subheader(f'Distribuição de Valores de Aluguel em {cidade}')
