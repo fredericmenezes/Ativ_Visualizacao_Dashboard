@@ -13,8 +13,10 @@ furniture_map = {
 }
 
 # Mapeamento das opções de 'accept' para português
-# accept_map = {'accept': 'aceita', 'not accept': 'não aceita'}
-
+accept_map = {
+    'accept': 'aceita',
+    'not accept': 'não aceita'
+}
 
 # Título do dashboard
 st.title('Dashboard de Aluguel de Casas no Brasil')
@@ -33,47 +35,18 @@ ax.set_xlabel('Valor do Aluguel (R$)')
 ax.set_ylabel('Frequência')
 st.pyplot(fig)
 
-# # Gráfico 2: Relação entre área do imóvel e valor do aluguel
-# st.subheader(f'Relação entre Área e Valor do Aluguel em {cidade}')
-# # Mapeamento dos valores da coluna 'furniture' para português no dataframe filtrado
-# df_filtered['furniture_pt'] = df_filtered['furniture'].map(furniture_map)
-# # Mapeamento dos valores da coluna 'accept' para português no dataframe filtrado
-# df_filtered['accept_pt'] = df_filtered['animal'].map(accept_map)
-# fig, ax = plt.subplots()
-# # sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture', style='animal', ax=ax)
-# sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture_pt', style='animal', ax=ax)
-# ax.set_xlabel('Área (m²)')
-# ax.set_ylabel('Valor do Aluguel (R$)')
-# st.pyplot(fig)
 # Gráfico 2: Relação entre área do imóvel e valor do aluguel
 st.subheader(f'Relação entre Área e Valor do Aluguel em {cidade}')
-
 # Mapeamento dos valores da coluna 'furniture' para português no dataframe filtrado
-df_filtered.loc[:,'furniture_pt'] = df_filtered['furniture'].map(furniture_map)
-
-# Mapeamento dos valores da coluna 'animal' (accept) para português no dataframe filtrado
-accept_map = {'acept': 'aceita', 'not acept': 'não aceita'}
-df_filtered.loc[:,'accept_pt'] = df_filtered['animal'].map(accept_map)
-
+df_filtered['furniture_pt'] = df_filtered['furniture'].map(furniture_map)
+# Mapeamento dos valores da coluna 'accept' para português no dataframe filtrado
+df_filtered['accept_pt'] = df_filtered['animal'].map(accept_map)
 fig, ax = plt.subplots()
-
-# Criar o scatterplot com a legenda traduzida
-scatter = sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture_pt', style='accept_pt', ax=ax)
-
-# Ajustar o título da legenda para "Tipo de Mobiliário"
-handles, labels = ax.get_legend_handles_labels()
-
-# Atualizar os rótulos da legenda
-new_labels = [label.replace('furniture_pt', 'Tipo de Mobiliário').replace('animal', 'Aceitação de Animais') for label in labels]
-ax.legend(handles, new_labels, title='Legenda')
-
-# Definir rótulos dos eixos
+# sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture', style='animal', ax=ax)
+sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture_pt', style='animal', ax=ax)
 ax.set_xlabel('Área (m²)')
 ax.set_ylabel('Valor do Aluguel (R$)')
-
-# Exibir o gráfico
 st.pyplot(fig)
-
 
 # Gráfico 3: Comparação de imóveis mobiliados e não mobiliados
 st.subheader('Comparação de Imóveis Mobiliados vs Não Mobiliados')
