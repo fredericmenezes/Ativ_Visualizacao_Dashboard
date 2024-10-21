@@ -13,7 +13,7 @@ furniture_map = {
 }
 
 # Mapeamento das opções de 'accept' para português
-accept_map = {'accept': 'aceita', 'not accept': 'não aceita'}
+# accept_map = {'accept': 'aceita', 'not accept': 'não aceita'}
 
 
 # Título do dashboard
@@ -45,16 +45,15 @@ st.pyplot(fig)
 # ax.set_xlabel('Área (m²)')
 # ax.set_ylabel('Valor do Aluguel (R$)')
 # st.pyplot(fig)
-
 # Gráfico 2: Relação entre área do imóvel e valor do aluguel
 st.subheader(f'Relação entre Área e Valor do Aluguel em {cidade}')
 
 # Mapeamento dos valores da coluna 'furniture' para português no dataframe filtrado
-df_filtered['furniture_pt'] = df_filtered['furniture'].map(furniture_map)
+df_filtered.loc[:,'furniture_pt'] = df_filtered['furniture'].map(furniture_map)
 
 # Mapeamento dos valores da coluna 'animal' (accept) para português no dataframe filtrado
-# accept_map = {'accept': 'aceita', 'not accept': 'não aceita'}
-df_filtered['accept_pt'] = df_filtered['animal'].map(accept_map)
+accept_map = {'acept': 'aceita', 'not acept': 'não aceita'}
+df_filtered.loc[:,'accept_pt'] = df_filtered['animal'].map(accept_map)
 
 fig, ax = plt.subplots()
 
