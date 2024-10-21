@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Carregar o dataset
-df = pd.read_csv('house02.csv')
+dados = pd.read_csv('house02.csv')
+
+# remover os outliers
+q = dados["area"].quantile(0.99)
+df = dados[(dados["area"] < q)]
 
 # Mapeamento das opções de 'furnished' para português
 furniture_map = {
