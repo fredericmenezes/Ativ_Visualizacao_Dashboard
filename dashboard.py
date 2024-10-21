@@ -14,8 +14,8 @@ furniture_map = {
 
 # Mapeamento das opções de 'accept' para português
 accept_map = {
-    'accept': 'aceita',
-    'not accept': 'não aceita'
+    'acept': 'aceita',
+    'not acept': 'não aceita'
 }
 
 # Título do dashboard
