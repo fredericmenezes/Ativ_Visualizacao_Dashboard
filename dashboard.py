@@ -44,8 +44,6 @@ df_filtered['accept_pt'] = df_filtered['animal'].map(accept_map)
 fig, ax = plt.subplots()
 # sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture', style='animal', ax=ax)
 sns.scatterplot(data=df_filtered, x='area', y='rent amount (R$)', hue='furniture_pt', style='animal', ax=ax)
-# Ajustar o título da legenda de 'furniture_pt' para 'Tipo de Mobiliário'
-sns.scatter.legend_.set_title('Tipo de Mobiliário')
 ax.set_xlabel('Área (m²)')
 ax.set_ylabel('Valor do Aluguel (R$)')
 st.pyplot(fig)
